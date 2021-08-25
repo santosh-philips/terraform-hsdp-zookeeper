@@ -24,10 +24,7 @@ resource "hsdp_container_host" "zookeeper" {
   bastion_host = var.bastion_host
   user         = var.user
   private_key  = var.private_key
-
-  commands = [
-    "docker volume create zookeeper"
-  ]
+  
 }
 
 resource "hsdp_container_host_exec" "cluster" {
@@ -47,7 +44,7 @@ resource "hsdp_container_host_exec" "cluster" {
     source      = "${path.module}/scripts/bootstrap-cluster.sh"
     destination = "/home/${var.user}/bootstrap-cluster.sh"
   }
-  
+
   file {
     source      = "${path.module}/scripts/jmxconfig.yml.tmpl"
     destination = "/home/${var.user}/jmxconfig.yml.tmpl"
