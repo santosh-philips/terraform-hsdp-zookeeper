@@ -24,7 +24,7 @@ resource "hsdp_container_host" "zookeeper" {
   bastion_host = var.bastion_host
   user         = var.user
   private_key  = var.private_key
-  
+
 }
 
 resource "hsdp_container_host_exec" "cluster" {
